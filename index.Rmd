@@ -1,0 +1,82 @@
+---
+title       : Simple Fuel Explorer App
+subtitle    : Do I spend more money when fuel is cheaper?
+author      : slam
+job         : data scientist
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []           # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+
+---
+
+## What is the App?
+
+. It is a very simple app to view relationships between some simple attributes of fuel data I've gathered in my spare time.
+
+. The dataset is stored as a data frame as follows:
+
+```{r, echo=FALSE, results='hide'}
+library(ggplot2)
+library(RCurl)
+fileurl <- "https://raw.githubusercontent.com/contradirony/RShinyApps/master/fuel_1314.csv"
+myCsv <- getURL(fileurl)
+temporaryFile <- tempfile()
+con <- file(temporaryFile, open = "w")
+cat(myCsv, file = con) 
+close(con)
+dataset <- read.csv(temporaryFile, header=TRUE)
+```
+
+```{r, echo=TRUE}
+head(dataset)
+```
+
+--- .class #id 
+
+## 
+
+
+```{r, echo=FALSE, results='hide'}
+library(RCurl)
+library(ggplot2)
+fileurl <- "https://raw.githubusercontent.com/contradirony/RShinyApps/master/fuel_1314.csv"
+myCsv <- getURL(fileurl)
+temporaryFile <- tempfile()
+con <- file(temporaryFile, open = "w")
+cat(myCsv, file = con) 
+close(con)
+dataset <- read.csv(temporaryFile, header=TRUE)
+```
+Example output:
+```{r, echo=TRUE}
+ ggplot(dataset, aes_string('MoneySpent', 'PricePerLitre')) +  geom_point(size=3) 
+
+```
+
+--- .class #id 
+
+## How to use it
+
+1. There are 3 attributes in the dataset: MoneySpent, LitresOfPetrol and PricePerLitre
+2. Select one of the three for the *x*-axis and a different one for the *y*-axis.
+3. See the graph update reactively in real-time after selection!
+
+
+**Example interpretation**
+
+In the previous graph you can see there are slightly more dots in the bottom right side which means that the cheaper the price per litre, the more instances of money spent, especially when you compare the 15-20 range to the 45-50 range.
+
+However, it is more evenly distributed between 30 and 40 as I drove regularly enough to have to buy petrol regardless of the price.
+
+--- .class #id 
+
+## In conclusion...
+
+. Please try it out!
+
+
+. It can be found at: https://contradirony.shinyapps.io/fuelApp
+

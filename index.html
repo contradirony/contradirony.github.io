@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Fuel Explorer App</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Simple Fuel Explorer App">
+  <meta name="author" content="slam">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Simple Fuel Explorer App</h1>
+    <h2>Do I spend more money when fuel is cheaper?</h2>
+    <p>slam<br/>data scientist</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>What is the App?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p class=''>It is a very simple app to view relationships between some simple attributes of fuel data I&#39;ve gathered in my spare time.</p>
+
+<p class=''>The dataset is stored as a data frame as follows:</p>
+
+<pre><code class="r">head(dataset)
+</code></pre>
+
+<pre><code>##   PricePerLitre MoneySpent LitresOfPetrol
+## 1         1.629      30.00       18.41621
+## 2         1.599      30.00       18.76173
+## 3         1.619      20.13       12.43360
+## 4         1.589      40.00       25.17306
+## 5         1.629      40.07       24.59791
+## 6         1.579      30.05       19.03103
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    <p>Example output:</p>
+
+<pre><code class="r"> ggplot(dataset, aes_string(&#39;MoneySpent&#39;, &#39;PricePerLitre&#39;)) +  geom_point(size=3) 
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How to use it</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>There are 3 attributes in the dataset: MoneySpent, LitresOfPetrol and PricePerLitre</li>
+<li>Select one of the three for the <em>x</em>-axis and a different one for the <em>y</em>-axis.</li>
+<li>See the graph update reactively in real-time after selection!</li>
+</ol>
+
+<p><strong>Example interpretation</strong></p>
+
+<p>In the previous graph you can see there are slightly more dots in the bottom right side which means that the cheaper the price per litre, the more instances of money spent, especially when you compare the 15-20 range to the 45-50 range.</p>
+
+<p>However, it is more evenly distributed between 30 and 40 as I drove regularly enough to have to buy petrol regardless of the price.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>In conclusion...</h2>
+  </hgroup>
+  <article data-timings="">
+    <p class=''>Please try it out!</p>
+
+<p class=''>It can be found at: <a href="https://contradirony.shinyapps.io/fuelApp">https://contradirony.shinyapps.io/fuelApp</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='What is the App?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='NA'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='How to use it'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='In conclusion...'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
